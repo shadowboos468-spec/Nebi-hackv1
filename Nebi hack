@@ -1,0 +1,114 @@
+
+local Players = game:GetService("Players")
+local player = Players.LocalPlayer
+
+local KEY = "nebi3131"
+
+local gui = Instance.new("ScreenGui")
+gui.Name = "NebiHack"
+gui.ResetOnSpawn = false
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 300, 0, 190)
+frame.Position = UDim2.new(0.5, -150, 0.5, -95)
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+frame.Parent = gui
+
+local corner = Instance.new("UICorner")
+corner.CornerRadius = UDim.new(0, 12)
+corner.Parent = frame
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 45)
+title.BackgroundTransparency = 1
+title.Text = "NEBI HACK"
+title.TextColor3 = Color3.fromRGB(255, 50, 70)
+title.TextSize = 25
+title.Font = Enum.Font.GothamBold
+title.Parent = frame
+
+local keyBox = Instance.new("TextBox")
+keyBox.Size = UDim2.new(0.8, 0, 0, 38)
+keyBox.Position = UDim2.new(0.1, 0, 0, 55)
+keyBox.PlaceholderText = "Key daxil et"
+keyBox.Text = ""
+keyBox.TextSize = 16
+keyBox.BackgroundColor3 = Color3.fromRGB(40, 40, 48)
+keyBox.TextColor3 = Color3.new(1, 1, 1)
+keyBox.Parent = frame
+
+local enter = Instance.new("TextButton")
+enter.Size = UDim2.new(0.8, 0, 0, 35)
+enter.Position = UDim2.new(0.1, 0, 0, 105)
+enter.Text = "ENTER"
+enter.TextSize = 16
+enter.BackgroundColor3 = Color3.fromRGB(190, 35, 55)
+enter.TextColor3 = Color3.new(1, 1, 1)
+enter.Parent = frame
+
+local status = Instance.new("TextLabel")
+status.Size = UDim2.new(1, 0, 0, 25)
+status.Position = UDim2.new(0, 0, 1, -25)
+status.BackgroundTransparency = 1
+status.Text = ""
+status.TextColor3 = Color3.new(1, 1, 1)
+status.TextSize = 13
+status.Parent = frame
+
+local menu = Instance.new("Frame")
+menu.Size = frame.Size
+menu.Position = frame.Position
+menu.BackgroundColor3 = Color3.fromRGB(20, 20, 25)
+menu.Visible = false
+menu.Parent = gui
+
+local menuCorner = Instance.new("UICorner")
+menuCorner.CornerRadius = UDim.new(0, 12)
+menuCorner.Parent = menu
+
+local menuTitle = Instance.new("TextLabel")
+menuTitle.Size = UDim2.new(1, 0, 0, 55)
+menuTitle.BackgroundTransparency = 1
+menuTitle.Text = "NEBI HACK"
+menuTitle.TextColor3 = Color3.fromRGB(255, 50, 70)
+menuTitle.TextSize = 25
+menuTitle.Font = Enum.Font.GothamBold
+menuTitle.Parent = menu
+
+local s2 = Instance.new("TextButton")
+s2.Size = UDim2.new(0.8, 0, 0, 50)
+s2.Position = UDim2.new(0.1, 0, 0, 75)
+s2.Text = "S2"
+s2.TextSize = 22
+s2.Font = Enum.Font.GothamBold
+s2.TextColor3 = Color3.new(1, 1, 1)
+s2.BackgroundColor3 = Color3.fromRGB(190, 35, 55)
+s2.Parent = menu
+
+local s2Corner = Instance.new("UICorner")
+s2Corner.CornerRadius = UDim.new(0, 8)
+s2Corner.Parent = s2
+
+gui.Parent = player:WaitForChild("PlayerGui")
+
+enter.MouseButton1Click:Connect(function()
+    if keyBox.Text == KEY then
+        frame.Visible = false
+        menu.Visible = true
+    else
+        status.Text = "Yanlis key!"
+        status.TextColor3 = Color3.fromRGB(255, 60, 60)
+    end
+end)
+
+s2.MouseButton1Click:Connect(function()
+    local success, err = pcall(function()
+        loadstring(game:HttpGet(
+            "https://api.luarmor.net/files/v4/loaders/28bc742e3a8f491e8155a5c4327fd4dd.lua"
+        ))()
+    end)
+
+    if not success then
+        warn("Nebi Hack xetasi:", err)
+    end
+end)
